@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Calistoga&family=Gugi&family=Lato:wght@100&family=Roboto:wght@100;900&family=Sofia&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+    background: rgb(5, 216, 253);
+}
+
+.wrapper{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 350px;
+    width: 100%;
+    background:#fff;
+    padding: 25px;
+    border-radius: 5%;
+    box-shadow: 4px 4px 2px rgba(12, 233, 185, 0.933);
+}
+
+.wrapper h2{
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgb(24, 233, 233);
+}
+
+.wrapper .input_field{
+    margin-bottom: 15px;
+    
+}
+
+/**/
+.wrapper textarea{
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+}
+
+.input_field input{
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    padding: 10px;  
+}
+
+.wrapper textarea{
+    height: 80px;
+    resize: none;
+}
+
+.wrapper .btn input[type="submit"]{
+    border: 0;
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background:#18ddf7;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    
+}
+
+.wrapper #error_message{
+    margin-bottom: 20px;
+    padding: 0px;
+    background: rgb(15, 223, 212);
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.5s ease;
+    color: white;
+
+       
+}

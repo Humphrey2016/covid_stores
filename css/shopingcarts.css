@@ -1,0 +1,16 @@
+/*imported font from google*/
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Calistoga&family=Gugi&family=Lato:wght@100&family=Roboto:wght@100;900&family=Sofia&display=swap');
+
+
+.show-cart li {
+  display: flex;
+}
+.card {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.card-img-top {
+  width: 200px;
+  height: 200px;
+  align-self: center;
+}
