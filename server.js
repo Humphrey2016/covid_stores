@@ -1,8 +1,19 @@
 
 const express = require('express');
 const bodyParser= require('body-parser');
+const mongoose = require ('mongoose');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+require('dotenv').config();
+
+
+// const expressSession = require('express-session')({
+//   secret: 'secret',
+//   resave: false,
+//   saveUninitialized: false
+// });
+
+
+// const logger = require('morgan');
 //importing Stake holders Routes
 const managerRoutes = require('./routes/managerRoutes');
 const salesAgentsRoutes = require('./routes/salesAgentsRoutes');
@@ -10,6 +21,17 @@ const customersRoutes = require('./routes/customersRoutes');
 const path = require('path');
 
 const app = express();
+
+//mongodb
+mongoose.connect("mongodb://localhost:27017/covidapp",{
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+  },
+  function(err) {
+    if (err) throw err;
+    console.log("Successfully connected");
+  }
+);
 
 
 //pug engine
@@ -25,6 +47,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // To parse json data
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(expressSession);
 
 // Simple request time logger
 app.use((req, res, next) => {
@@ -50,9 +73,9 @@ app.get('/home', (req, res) => {
 app.use(bodyParser.urlencoded({extended: true}));
 
 //using the imported Routes
-app.use('/', customersRoutes)
-app.use('/manager', managerRoutes)
-app.use('/agent', salesAgentsRoutes)
+app.use('/', customersRoutes);
+app.use('/manager', managerRoutes);
+app.use('/agent', salesAgentsRoutes);
 
 // For invalid routes
 app.get('*', (req, res) => {
@@ -60,7 +83,7 @@ app.get('*', (req, res) => {
 });
 
 
-
+//start listening to the server
 app.listen(3000, function() {
     console.log('listening to your code on 3000')
   })

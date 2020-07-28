@@ -1,10 +1,10 @@
 function validform() {
 
-    var a = document.forms["my-form"]["full-name"].value;
-    var b = document.forms["my-form"]["email-address"].value;
+    var a = document.forms["my-form"]["fullname"].value;
+    var b = document.forms["my-form"]["emailaddress"].value;
     var c = document.forms["my-form"]["username"].value;
-    var d = document.forms["my-form"]["permanent-address"].value;
-    var e = document.forms["my-form"]["nid-number"].value;
+    var d = document.forms["my-form"]["permanentaddress"].value;
+    var e = document.forms["my-form"]["NINnumber"].value;
 
     if (a==null || a=="")
     {
