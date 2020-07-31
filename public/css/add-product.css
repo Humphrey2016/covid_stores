@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Calistoga&family=Gugi&family=Lato:wght@100&family=Roboto:wght@100;900&family=Sofia&display=swap");
+
+* {
+    margin: 0px;
+}
+
+body {
+    background-color: #f1f3f4;
+    font-family: sans-serif;
+}
+
+#head {
+    text-align: center;
+    color: rgb(26, 238, 121);
+    font-size: 2rem;
+    font-family: sofia, sans-serif;
+    ;
+
+}
+
+label {
+    font-weight: bold;
+    width: 40%;
+    float: left;
+}
+
+legend {
+    font-weight: bold;
+}
+
+.form-groupa{
+    color: rgb(97, 243, 92);
+    margin: 0.5em;
+    font-family: sofia;
+}
+
+.form input{
+    width: 20%;
+    border: 1px solid #aaa;
+    border-radius: 5rem;
+    padding: 6px;
+    outline: none;
+}
+
+.form textarea{
+    width: 20%;
+    border: 1px solid #aaa;
+    border-radius: 0.5rem;
+    padding: 6px;
+    outline: none;
+}
+
+.form select{
+    width: 20%;
+    border: 1px solid #aaa;
+    border-radius: 0.5rem; 
+    padding: 6px;
+    outline: none;
+}

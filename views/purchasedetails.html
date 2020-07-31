@@ -1,0 +1,142 @@
+<link rel="stylesheet" href="../public//css//registersales.css">
+
+<body>
+    <div w3-include-html="/includes/nav.html"></div>
+    <!--------------------Nav bar---------------------->
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card-body">
+                    <header class="card-header">
+                        <h1 class="card-title" id="head">PURCHASE DETAILS</h1>
+                    </header>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!------main------>
+            <div class="col-md-2">
+                <div w3-include-html="/includes/sidebar.html"></div>
+            </div>
+
+            <div class="col-md-6">
+
+                <form action="/register/agents" method="POST" name="salesAgent" id="salesAgent">
+
+
+                    <fieldset class="form-group border p-2">
+                        <legend class="w-auto border-primary">Customer Purchase Details</legend>
+                        <div class="form-group">
+                            <div class="form-groupb">
+                                <label class="form-control-label" for="customerName">Customer Name</label>
+                                <div class="form2">
+                                    <input type="text" name="customerName">
+                                </div>
+                            </div>
+
+                            <!----------form-group---------->
+                            <div class="form-groupb">
+                                <label class="form-control-label" for="location">Location</label>
+                                <div class="form2">
+                                    <input type="text" name="location">
+                                </div>
+                            </div>
+
+                            <!----------form-group---------->
+                            <div class="form-groupb">
+                                <label class="form-control-label" for="phone-no.">Phone No.</label>
+                                <div class="form2">
+                                    <input type="text" name="Tel">
+                                </div>
+                            </div>
+
+                            <!----------form-group----------> 
+                            <div class="form-groupb">
+                                <label class="form-control-label" for="emailAdress">Email Adress</label>
+                                <div class="form2">
+                                    <input type="text" name="emailAdress">
+                                </div>
+                            </div>
+
+                            <!----------form-group----------> 
+                                                                                 
+                            <div class="form-groupb">
+                                <label class="form-control-label" for="NINno"> National ID No.</label>
+                                <div class="form2">
+                                    <input type="text" name="NINno" id="NINno.">
+                                </div>
+
+                            </div>
+                            <!----------form-group---------->
+                            <div class="form-groupb">
+                                <label class="form-control-label" for="itemName">Item Name</label>
+                                <div class="form2">
+                                    <input type="text" name="itemName">
+                                </div>
+                            </div>
+
+                            <!----------form-group----------> 
+                            <div class="form-groupb">
+                                <label class="form-control-label" for="serialNo">Serial Number</label>
+                                <div class="form2">
+                                    <input type="text" name="serialNo.">
+                                </div>
+                            </div>
+
+                            <!----------form-group---------->                                                                                     
+
+                            <div class="form-groupb">
+                                <label class="form-control-label" for="Initialpay">Initial Pay (.00ugx)</label>
+                                <div class="form2">
+                                    <input type="text" name="Initialpay">
+                                </div>
+
+                            </div>
+                            <!----------form-group---------->
+                            <div class="form-groupb">
+                                <label class="form-control-label" for="nextPay">Next Date Of Payment</label>
+                                <div class="form2">
+                                    <input type="text" name="nextPay">
+                                </div>
+                            </div>
+
+                            <!----------form-group---------->    
+                            <div class="form-groupb">
+                                <label class="form-control-label" for="nextAmount">Next Amount to be Paid</label>
+                                <div class="form2">
+                                    <input type="text" name="nextAmount">
+                                </div>
+                            </div>
+
+                            <!----------form-group---------->
+                            <div class="form-groupb">
+                                <label class="form-control-label" for="refNo">Referee number</label>
+                                <div class="form2">
+                                    <input type="text" name="refNo"><br>
+                                </div>
+                            </div>
+
+                            <!----------form-group---------->                 
+
+                            <div class="form-groupb">
+                                <div class="form2">
+                                    <input class="btn btn-warning btn-block" type="Submit"
+                                        onclick="return registersalesAgent()">
+                                </div>
+                            </div>
+                            <!----------form---------->
+
+                        </div>
+
+                    </fieldset>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+</body>

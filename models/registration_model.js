@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
+  
 const regschema = new mongoose.Schema({
     fullname: String,
     emailaddress: String,
@@ -7,11 +9,13 @@ const regschema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    phonenumber: String, 
-    presentaddress: String,
+    password: String, 
+    repassword: String,
     permanentaddress: String,
+    EMPnumber: String,
     NINnumber: String,
    
 });
+regschema.plugin(passportLocalMongoose)
 
 module.exports = mongoose.model('Registration', regschema);

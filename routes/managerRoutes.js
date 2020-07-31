@@ -1,8 +1,10 @@
-const express=require('express');
-const router=express.Router();
+const express = require('express');
+const router = express.Router();
 const mongoose = require('mongoose');
 require("../models/registration_model");
+// require("../models/login_model");
 const Registration = mongoose.model("Registration");
+// const Login = mongoose.model("Login");
 
 
 var view = "./views/"
@@ -41,18 +43,25 @@ router.post("/reg", async (req, res) => {
 
 
 router.get('/login', (req, res) => {
-  res.sendFile("login.html", { root: view });
+  res.render("managerlogin");
 });
 
+
+router.get('/admin', (req, res) => {
+  res.render("admin.html");
+});
+// router.post("/login", async (req, res) => {
+//   // console.log(req.body);
+//   // const login = new Login(req.body);
+//   try {
+//     await login.save();
+//     res.send("Thank you for loging in!");
+//     // res.redirect("/login");
+//   } catch (err) {
+//     console.log(err);
+//     res.send("Sorry! Something went wrong.");
+//   }
+// });
+
+
 module.exports=router;
-
-
-// const express = require('express');
-
-// const router = express.Router();
-
-// router.get('/reg',(req,res)=>{
-//     res.sendFile('registration-form.html',{root:'views'})
-// })
-
-// module.exports = router

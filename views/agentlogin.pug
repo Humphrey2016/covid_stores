@@ -1,0 +1,47 @@
+link(href='//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css', rel='stylesheet')
+link(rel='stylesheet', href='/css/login.css')
+link(href='https://fonts.googleapis.com/css?family=Arimo:400,700,400italic,700italic', rel='stylesheet', type='text/css')
+link(href='https://fonts.googleapis.com/css?family=Stint+Ultra+Condensed', rel='stylesheet', type='text/css')
+meta(content='width=device-width,initial-scale=1,maximum-scale=1', name='viewport')
+form(name='loginform', action='/agent/login', method='POST')
+  .signform
+    //  left side will be in the top at 640px screen
+    .left
+      .bts
+        a.fblogin(href='#')
+          i.fa.fa-facebook
+          span Sign in with facebook
+        a.gplogin(href='#')
+          i.fa.fa-google-plus
+          span Sign in with Google
+        a.twlogin(href='#')
+          i.fa.fa-twitter
+          span Sign in with twitter
+    //  end left side 
+    //  right side will be in the bottom at 640px screen
+    .right
+      .headit
+        h login here or
+        a(href='#') sign up now
+      .input-group.margin-bottom-sm
+        span.input-group-addon
+          i.fa.fa-envelope-o.fa-fw
+        input.form-control(type='text', placeholder='username', name='username')
+      .input-group.margin-bottom-sm
+        span.input-group-addon
+          i.fa.fa-envelope-o.fa-fw
+        input.form-control(type='text', placeholder='Email address', name='emailadress')
+      .input-group
+        span.input-group-addon
+          i.fa.fa-key.fa-fw
+        input.form-control(type='password', placeholder='Password', name='password')
+      input.subbt(type='submit', value='login')
+      br
+      a(href='#') Forgot your password?
+    //  end left side 
+//  copyrights area 
+a.copyright(target='_blank', href='https://www.facebook.com/')
+  i.fa.fa-check-square
+  | 
+COVID.STORES.Design.by.HUMPHREY
+

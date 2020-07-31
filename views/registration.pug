@@ -16,11 +16,11 @@ main.my-form
         .card
           .card-header REGISTER NEW SALES AGENT
           .card-body
-            form(name='registration-form', action='/manager/reg', method='POST')
+            form(name='registration-form',onsubmit='return validation()', action='/manager/reg', method='POST')
               .form-group.row
                 label.col-md-4.col-form-label.text-md-right(for='full_name') Full Name
                 .col-md-6
-                  input#full_name.form-control(type='text', name='fullname')
+                  input#full_name.form-control(type='text', name='fullname', required)
               .form-group.row
                 label.col-md-4.col-form-label.text-md-right(for='email_address') E-Mail Address
                 .col-md-6
@@ -28,19 +28,25 @@ main.my-form
               .form-group.row
                 label.col-md-4.col-form-label.text-md-right(for='user_name') User Name
                 .col-md-6
-                  input#user_name.form-control(type='text', name='username')
+                  input#user_name.form-control(type='text', name='username', required)
               .form-group.row
-                label.col-md-4.col-form-label.text-md-right(for='phone_number') Phone Number
+                label.col-md-4.col-form-label.text-md-right(for='password') Choose Password
                 .col-md-6
-                  input#phone_number.form-control(type='text', name='phonenumber')
+                  input#user_name.form-control(type='password', placeholder='Password', name='password', required)                  
               .form-group.row
-                label.col-md-4.col-form-label.text-md-right(for='present_address') Present Address
+                label.col-md-4.col-form-label.text-md-right(for='password') Re Enter Password
                 .col-md-6
-                  input#present_address.form-control(type='text', name='presentaddress')
+                  input#password.form-control(type='password', placeholder='Re Password', name='repassword', required)
               .form-group.row
                 label.col-md-4.col-form-label.text-md-right(for='permanent_address') Permanent Address
                 .col-md-6
-                  input#permanent_address.form-control(type='text', name='permanentaddress')
+                  input#permanent_address.form-control(type='text', name='permanentaddress', required)
+              .form-group.row
+                label.col-md-4.col-form-label.text-md-right(for='EMPnumber')
+                  abbr(title='EMPLOYEE Id Card') Employee ID
+                  |  Number
+                .col-md-6
+                  input#nid_number.form-control(type='text', name='EMPnumber', required)
               .form-group.row
                 label.col-md-4.col-form-label.text-md-right(for='NINnumber')
                   abbr(title='National Id Card') NID
@@ -52,7 +58,7 @@ main.my-form
                   
                   Register
                   
-//- script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
-//- script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
-//- script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
-//- script(src='../js/registration-form.js')
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
+script(src='../js/registration-form.js')

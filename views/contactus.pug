@@ -1,0 +1,23 @@
+meta(charset='UTF-8')
+meta(name='viewport', content='width=device-width,initial-scale=1')
+link(rel='stylesheet', href='/css/contactus.css')
+
+title Contact Us
+.wrapper
+  h2 Contact Us
+  #error_message
+  form#myform(action='/contactus', method='POST', onsubmit='return validation()')
+    .input_field
+      input#name(type='text', placeholder='Name', name='name')
+    .input_field
+      input#subject(type='text', placeholder='Subject', name='subject')
+    .input_field
+      input#email(type='text', placeholder='Email', name= 'email')
+    .input_field
+      input#phone(type='text', placeholder='Phone', name='phonenumber')
+    .input_field
+      textarea#message(placeholder='Message', name='message')
+    .btn
+      input(type='submit')
+
+      script(src='../js/contact-us.js')
