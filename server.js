@@ -1,204 +1,178 @@
 
+//declaring and requiring middlewares
 const express = require('express');
 const bodyParser= require('body-parser');
-const mongoose = require ('mongoose');
+const mongoose = require('mongoose');
+const mongodb =require('mongodb') 
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const multer = require('multer');
+const fs =require('fs')
 const passport = require('passport');
-// const Strategy = require('passport-local').Strategy;
 const expressSession = require("express-session")({
   secret: "secret",
   resave: false,
   saveUninitialized: false
 });
 require('dotenv').config();
-const flash = require('connect-flash');
-
 const app = express();
-
-const register = require('./models/registration_model');
-
+const managerRegister = require('./models/managerRegistration_model');
+const agentRegister = require('./models/agentRegistration_model');
 
 
 //importing Stake holders Routes
 const managerRoutes = require('./routes/managerRoutes');
 const salesAgentsRoutes = require('./routes/salesAgentsRoutes');
 const customersRoutes = require('./routes/customersRoutes');
-const loginRoutes = require('./routes/loginRoutes');
+const { db } = require('./models/managerRegistration_model');
 
+// mongoose connection
+mongoose.connect(process.env.DATABASE,
+  {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
 
-// const authUtils = require('./utilities/auth');
-// const authRouter = require('./routes/auth');
-// const {MongoClient} = require('mongodb');
-// const { purge } = require('./routes/managerRoutes');
+  }
+);
+mongoose.connection
+  .on("open", () => {
+    console.log("Mongoose connection now open...");
+  })
+  .on("error", err => {
+    console.log(`Connection error: ${err.message}`);
+  });
 
 
 //pug engine
 app.set('view engine', 'pug');
 app.set('views', './views');
 
-//HTML views
+// index Route
+app.get('/upload',(req, res) => {
+  res.render("index");
+});
+
+
+//rendering views
 var view = "./views/"
-
-
+//setting a path for the static files
+app.use(express.static(path.join(__dirname, 'public')));
 // To parse URL encoded data
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 // To parse json data
 app.use(bodyParser.json());
-// app.use(expresss.json());
-app.use(express.static(path.join(__dirname, 'public')));
 
+
+
+// Express session configs
 app.use(expressSession);
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
 
-passport.use(register.createStrategy());
-passport.serializeUser(register.serializeUser());
-passport.deserializeUser(register.deserializeUser());
+
+// Passport agentregistration configs
+passport.use(managerRegister.createStrategy());
+passport.serializeUser(managerRegister.serializeUser());
+passport.deserializeUser(managerRegister.deserializeUser());
+
+// Passport agentregistration configs
+passport.use(agentRegister.createStrategy());
+passport.serializeUser(agentRegister.serializeUser());
+passport.deserializeUser(agentRegister.deserializeUser());
 
 //using the imported Routes
 app.use('/', customersRoutes);
 app.use('/manager', managerRoutes);
 app.use('/agent', salesAgentsRoutes);
 
-//db
-// mongoose.connect(process.env.DATABASE, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useCreateIndex: true,
-// });
-
-// mongoose.connection
-//   .on('open', () => {
-//     console.log('Mongoose connection is now open');
-//   })
-//   .on('error', (err) => {
-//     console.log(`Connection error: ${err.message}`);
-//   });
-
-
-// MongoClient.connect('mongodb://localhost',(err, client) =>{
-//   if (err) {
-//     throw err;
-//   }
-
-//   const db = client.db('user-profile');
-//   const users =db.collection('users');
-//   app.locals.users = users;
-// });
-
-// passport.use(new Strategy(
-//   (username, password, done)=>{
-//     app.locals.users.findOne({username}, (err,user)=>{
-//       if (err) {
-//         return done(err);
-//       }
-
-//       if(!user){
-//         return done(null, false);
-//       }
-//       if(user.passport != authUtils.hashPassword(password)){
-//         return done(null, false);
-//       }
-//       return done(null, user);
-//     })
-//   }));
-
-  // passport.serializeUser((user, done)=>{
-  //   done(null, user._id);
-  // });
-
-  // passport.deserializeUser((id, done)=> {
-  //   done(null, {id});
-  // })
-
-// mongoose
-mongoose.connect(process.env.DATABASE,
-  {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false
+//defining multer
+var storage = multer.diskStorage({
+  destination: function (req, file, callback){
+    callback(null, 'uploads');
+  },
+  filename: function(req, file, callback){
+    callback(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname));
   }
-);
-mongoose.connection
-  .on("open", () => {
-    console.log("Mongoose connection open");
-  })
-  .on("error", err => {
-    console.log(`Connection error: ${err.message}`);
+});
+
+//creating an upload variable and asigning it to multer
+var upload = multer({
+  storage:storage
+});
+
+//config singe file
+app.post('/uploadfile',upload.single('myFile'),(req, res, next)=>{
+  const file = req.file;
+  if(!file){
+    //if there is an error
+    const error = new Error("please upload a file");
+    error.httpStatusCode = 400;
+    return next(error);
+  }
+  //if no error
+  res.send(file);
+});
+
+//config multiple files 
+app.post("/uploadmultiple", upload.array('myFile',12),(req, res, next)=>{
+  const files = req.files;
+  if(!files){
+    //if error
+    const error = new Error("please choose files");
+
+    error.httpStatusCode = 400;
+    return next(error);
+  }
+  //no error
+  res.send(files)
+});
+
+// configuring the image upload to the database
+app.post("/uploadphoto",upload.single('myImage'),(req, res)=>{
+  var img = fs.readFileSync(req.file.path);
+
+  var encode_image = img.toString('base64');
+
+//define a JSON Object for the image
+  var finalImg = {
+    contentType: req.file.mimetype,
+    path:req.file.path,
+    image:new Buffer(encode_image, 'base64')
+  };
+  //inser image to the database
+  db.collection('image').insertOne(finalImg,(err, result) => {
+    console.log(result);
+
+    if(err) return console.log(err);
+
+    console.log("saved to your dataBase no need to panic");
+
+    res.contentType(finalImg.contentType);
+
+    res.send(finalImg.image);
   });
-
-// mongoose.connection
-//   .on("open", () => {
-//     console.log("Mongoose connection open");
-//   })
-//   .on("error", err => {
-//     console.log(`Connection error: ${err.message}`);
-//   });
+});
 
 
-// app.use(express-session());
-// app.use(session({
-//   secret: 'session secret',
-//   resave: false,
-//   saveUninitialized: false,
+// index Route
+  app.get('/', (req, res) => {
+    res.sendFile("index.html", { root: view });
+});
 
-// app.use('/auth', authRouter);
+// index Route
+app.get('/images', (req, res) => {
+  res.sendFile("multer.html", { root: view });
+});
+  
 
-/* PASSPORT LOCAL AUTHENTICATION */
-
-
-
-// /* ROUTES */
-// app.post('/login', (req, res, next) => {
-//   passport.authenticate('local',
-//   (err, user, info) => {
-//     if (err) {
-//       return next(err);
-//     }
-
-//     if (!user) {
-//       return res.redirect('/login?info=' + info);
-//     }
-
-//     req.logIn(user, function(err) {
-//       if (err) {
-//         return next(err);
-//       }
-
-//       return res.redirect('/');
-//     });
-
-//   })(req, res, next);
-// });
-
-// app.get('/login',
-//   (req, res) => res.sendFile('html/login.html',
-//   { root: __dirname })
-// );
-
-// app.get('/',
-//   connectEnsureLogin.ensureLoggedIn(),
-//   (req, res) => res.sendFile('html/index.html', {root: __dirname})
-// );
-
-// app.get('/private',
-//   connectEnsureLogin.ensureLoggedIn(),
-//   (req, res) => res.sendFile('html/private.html', {root: __dirname})
-// );
-
-// app.get('/user',
-//   connectEnsureLogin.ensureLoggedIn(),
-//   (req, res) => res.send({user: req.user})
-// );
 // Simple request time logger
 app.use((req, res, next) => {
   console.log('A new request received at ' + Date.now());
   next();
 });
-
 
 
 // For invalid routes
@@ -209,5 +183,5 @@ app.get('*', (req, res) => {
 
 //start listening to the server
 app.listen(3000, function() {
-    console.log('listening to your code on 3000')
-  })
+    console.log('listening to your code on 3000...')
+});

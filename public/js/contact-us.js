@@ -3,7 +3,7 @@ function validation(){
     var subject = document.getElementById("subject").Value;
     var phone = document.getElementById("phone").Value;
     var email = document.getElementById("email").Value;
-    var message = document.getElementById("name").Value;
+    var message = document.getElementById("message").Value;
     var error_message = document.getElementById("error_message");
     var text;
 

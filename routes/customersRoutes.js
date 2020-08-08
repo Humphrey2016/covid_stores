@@ -3,17 +3,26 @@ const router=express.Router();
 const mongoose = require('mongoose');
 require("../models/contactusmodel");
 const Contactus = mongoose.model("Contactus");
-
-
+//rendering views
 var view = "./views/"
 
-router.get('/', (req, res) => {
-    res.sendFile("index.html", { root: view });
+router.get('/aboutUs', (req, res) => {
+    res.sendFile("about_us.html", { root: view});
 });
 
-router.get('/TVsets', (req, res) => {
-    res.sendFile("TVsets.html", { root: view});
+
+router.get('/list', (req, res) => {
+    res.render("userlist");
 });
+
+router.get('/add', (req, res) => {
+    res.sendFile("add-product.html", { root: view});
+});
+
+router.get('/agentadd', (req, res) => {
+    res.sendFile("addAgent.html", { root: view});
+});
+
 
 router.get('/home-theater', (req, res) => {
     res.sendFile("home-theater.html", { root: view});
@@ -40,26 +49,27 @@ router.get('/others', (req, res) => {
 });
 
 router.get('/contact', (req, res) => {
-    res.sendFile("contact-us.html", { root: view});
+    res.render("contactus");
 });
 
 
-
+//contact-us us route
 router.get('/contactus', (req, res) => {
     res.render("contactus");
 });
 
+//posting a contact-us page to the browser
 router.post("/contactus", async (req, res) => {
     // console.log(req.body);
     const contactus = new Contactus(req.body);
     try {
       await contactus.save();
       res.send("Thank you for contacting us we will review your message and get back to us soon as possible!");
-      res.redirect('/');
+      
     } catch (err) {
       console.log(err);
       res.send("Sorry! Something went wrong.");
-    }
+    }res.redirect('/');
   });
 module.exports=router;
 

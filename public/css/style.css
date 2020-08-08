@@ -2,8 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton&family=Calistoga&family=Gugi&family=Lato:wght@100&family=Roboto:wght@100;900&family=Sofia&display=swap");
 
 :root {
-  --light-gray: #05c70fa1;
-  --primary-color: #39ccd6;
+  --light-gray: #23f32ea1;
+  --primary-color: #203846;
   --roboto: "sofia", sans-serif;
   --gugi: "Gugi", cursive;
   --sofia: "sofia", cursive;
@@ -32,7 +32,7 @@ header {
 
 .container .dropdown-toggle,
 .container .dropdown-item {
-  font-size: 0.7em;
+  font-size: 0.8em;
 }
 
 .header-links a {
@@ -59,10 +59,10 @@ h1 {
   text-align: center;
   width: 50%;
   font-family: var(--sofia);
-  margin-left: 40rem;
+  margin-left: 36rem;
   margin-top: 3rem;
   font-size: 4rem;
-  color: rgb(58, 245, 58);
+  color: rgb(7, 78, 95);
 }
 h2 {
   font-size: 2.8rem;
@@ -72,7 +72,7 @@ h2 {
 h3 {
   font-weight: bolder;
   margin-top: 1rem;
-  color: rgb(48, 230, 24);
+  color: rgb(9, 82, 104);
   text-align: center;
   font-size: 2rem;
   width: 30%;
@@ -80,7 +80,7 @@ h3 {
   text-align: center;
   font-weight: 6px;
   border-style: solid;
-  border-color: rgb(29, 189, 230);
+  border-color: rgb(16, 253, 28);
 }
 
 .position-top {
@@ -117,14 +117,14 @@ h3 {
   margin-left: 2rem;
   padding: 0;
   border: none;
-  background-color: rgb(31, 203, 226);
+  background-color: rgb(26, 50, 53);
   text-indent: -99999px;
   border-radius: 100%;
 }
 
 .slick-dots li.slick-active button {
   transform: scale(2.6);
-  box-shadow: 0px 4px 5px 1px rgb(19, 190, 212);
+  box-shadow: 0px 4px 5px 1px rgb(45, 65, 68);
 }
 
 /* Second Slide */
@@ -148,7 +148,7 @@ h3 {
   padding: 0.8rem 1.9rem;
   border-radius: 5rem;
   border: 1px solid var(--border);
-  background-color: rgb(84, 208, 224);
+  background-color: rgb(21, 58, 63);
   color: var(--light-gray);
 }
 

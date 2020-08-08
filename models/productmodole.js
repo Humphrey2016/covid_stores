@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/* const mongoose = require('mongoose');
 const contactusschema = new mongoose.Schema({
     name: String,
     subject: String,
@@ -12,4 +12,4 @@ const contactusschema = new mongoose.Schema({
    
 });
 
-module.exports = mongoose.model('Contactus', contactusschema);
+module.exports = mongoose.model('Contactus', contactusschema); */

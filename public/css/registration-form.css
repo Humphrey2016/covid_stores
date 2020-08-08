@@ -1,14 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
-
+*{
+    background: rgb(28, 77, 97);
+}
 body{
     margin: 0;
     font-size: .9rem;
     font-weight: 400;
     line-height: 1.6;
-    color: #212529;
+    color: #5fa5eb;
     text-align: left;
-    background-color: #62ccdf;
+    background-color: #62c1e7;
 }
 
 .my-form
@@ -17,6 +19,14 @@ body{
     padding-bottom: 1.5rem;
 }
 
+.my-form h2{
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgb(150, 240, 241);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 .my-form .row
 {   
 
@@ -24,14 +34,15 @@ body{
     margin-right: 0;
 }
 
-.login-form
-{
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+label{
+    color: #a7cbf0;
 }
-
-.login-form .row
-{
-    margin-left: 0;
-    margin-right: 0;
+.my-form #error_message{
+    margin-bottom: 20px;
+    padding: 0px;
+    background: rgb(6, 73, 85);
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.5s ease;
+    color: white;
 }

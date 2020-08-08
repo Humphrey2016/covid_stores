@@ -3,17 +3,12 @@
 
 <head>
     <title>Covid Stores</title>
-    <link rel="stylesheet" href="../public/css/add-product.css">
-    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--FontAwesome-->
+    <link rel="stylesheet" href="../css/add-product.css">
     <script src="https://kit.fontawesome.com/7bd4d37701.js" crossorigin="anonymous"></script>
 </head>
 
+<!----------------------this is to be used be used by the Managers to add stock------------------------------------->
 <body row justify-content-center>
-    <!--------------------Nav bar---------------------->
-    <div w3-include-html="/includes/nav.html"></div>
-
     <div class="container">
         <!-- Title -->
         <div class="row">
@@ -26,127 +21,120 @@
             </div>
         </div>
 
-        <div class="row">
-            <!------Side Bar------>
-            <div class="col-md-2">
-                <div w3-include-html="/includes/sidebar.html"></div>
-            </div>
+        <div class="col-md-6">
 
+            <form action="/" method="POST" name="addItem" id="addItem" enctype="multipart/form-data">
 
-            <div class="col-md-6">
+                <fieldset class="form-group border p-2">
+                    <legend class="w-auto border-primary">Product Info</legend>
+                    <div class="form-group">
 
-                <form action="/addItem" method="POST" name="addItem" id="addItem" enctype="multipart/form-data">
-
-                    <fieldset class="form-group border p-2">
-                        <legend class="w-auto border-primary">Product Info</legend>
-                        <div class="form-group">
-
-                            <div class="form-groupa">
-                                <label class="form-control-label" for="item-name"><span>Item Name:</span> </label>
-                                <div class="form">
-                                    <input type="text" placeholder="item-name" name="itemName" required>
-                                </div>
-
-                            </div><!-- form-group -->
-
-
-                            <div class="form-groupa">
-                                <label class="form-control-label" for="make">Make: </label>
-
-                                <div class="form">
-                                    <input type="text" placeholder="Make" name="ItemMake" required>
-                                </div>
-
-
-                            </div><!-- form-group -->
-
-                            <div class="form-groupa">
-                                <label class="form-control-label" for="entryDate">Date of Entry: </label>
-                                <div class="form">
-                                    <input name="entryDate" type="date">
-                                </div>
-                            </div><!-- form-group -->
-
-                            <div class="form-groupa">
-                                <label class="form-control-label" for="category" >Category: </label>
-                                <div class="form">
-                                    <select name="category" name="category">
-                                        <option value="0">Select Category</option>
-                                        <option value="3">Machinery</option>
-                                        <option value="4">TV Sets</option>
-                                        <option value="5">Home Theater</option>
-                                        <option value="1">Furniture</option>
-                                        <option value="2">Fitness Kits</option>
-                                        <option value="2">Others</option>                                                                                
-                                    </select>
-                                </div>
-                            </div><!-- form-group -->
-
-                            <div class="form-groupa">
-                                <label class="form-control-label" for="serial-number">Serial Number:
-                                </label>
-                                <div class="form">
-                                    <input type="text" placeholder="serial number" name="serialNumber" required>
-                                </div>
-                            </div><!-- form-group -->
-
-                            <div class="form-groupa">
-                                <label class="form-control-label" for="price">Price:
-                                </label>
-                                <div class="form">
-                                    <input type="text" placeholder="price" name="price" required>
-                                </div>
-                            </div><!-- form-group -->
-
-                            <div class="form-groupa">
-                                <label class="form-control-label" for="itemColor">Item Color: </label>
-                                <div class="form">
-                                    <input type="text" name="itemColor">
-                                </div>
-                            </div><!-- form-group -->
-
-                            <div class="form-groupa">
-                                <label class="form-control-label" for="itemDescription">Item Description:
-                                </label>
-                                <div class="form">
-                                    <textarea name="itemDescription" cols="23" rows="5"
-                                        placeholder="Item Description"></textarea>
-                                </div>
-                            </div><!-- form-group -->
-
-                            <div class="form-groupa">
-                                <label class="form-control-label" for="numberInStock">Number in Stock:
-                                </label>
-                                <div class="form">
-                                <input type="text" name="numberStock" id="numStock">
-                           </div>
-                            </div><!-- form-group -->
-
-                            <div class="form-groupa">
-                                <label class="form-control-label" for="itemPhoto">Item Photo:
-                                </label>
-                                <input type="file" id="itemPhoto" name="itemPhoto">
-                            </div><!-- form-group -->
+                        <div class="form-groupa">
+                            <label class="form-control-label" for="item-name"><span>Item Name:</span> </label>
+                            <div class="form">
+                                <input type="text" placeholder="Product-name" name="itemName" required>
+                            </div>
 
                         </div>
+                        <!----------------------Country-in-which-the-product-is-made-------------------->
                         <div class="form-groupa">
+                            <label class="form-control-label" for="make">Make: </label>
+
+                            <div class="form">
+                                <input type="text" placeholder="country" name="ItemMake" required>
+                            </div>
+
+
+                        </div>
+                        <!--------------------Entry-Date---------------------------------->
+
+                        <div class="form-groupa">
+                            <label class="form-control-label" for="entryDate">Date of Entry: </label>
+                            <div class="form">
+                                <input name="entryDate" type="date">
+                            </div>
+                        </div>
+                        <!-- -------------------Select-Item-Category----------------------------------->
+                        <div class="form-groupa">
+                            <label class="form-control-label" for="category">Category: </label>
+                            <div class="form">
+                                <select name="category" name="category">
+                                    <option value="0">Select Category</option>
+                                    <option value="3">Machinery</option>
+                                    <option value="4">TV Sets</option>
+                                    <option value="5">Home Theater</option>
+                                    <option value="1">Furniture</option>
+                                    <option value="2">Fitness Kits</option>
+                                    <option value="2">Others</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--------------------------------Serial.NO.----------------------------->
+
+                        <div class="form-groupa">
+                            <label class="form-control-label" for="serial-number">Serial Number:
+                            </label>
+                            <div class="form">
+                                <input type="text" placeholder="Serial-number" name="serialNumber" required>
+                            </div>
+                        </div>
+                        <!-----------------------------------Price---------------------------------->
+                        <div class="form-groupa">
+                            <label class="form-control-label" for="price">Price:
+                            </label>
+                            <div class="form">
+                                <input type="text" placeholder="000UGX" name="price" required>
+                            </div>
+                        </div>
+                        <!-----------------------------Item-Colour----------------------------------->
+                        <div class="form-groupa">
+                            <label class="form-control-label" for="itemColor">Item Color: </label>
+                            <div class="form">
+                                <input type="text" name="itemColor" placeholder="eg.Blue" required>
+                            </div>
+                        </div>
+                        <!---------------------------Product-Description--------------------------------->
+                        <div class="form-groupa">
+                            <label class="form-control-label" for="itemDescription">Item Description:
+                            </label>
+                            <div class="form">
+                                <textarea name="itemDescription" cols="23" rows="5"
+                                    placeholder="Item Description"></textarea>
+                            </div>
+                        </div>
+                        <!----------------------------Stock-NO.------------------------------>
+
+                        <div class="form-groupa">
+                            <label class="form-control-label" for="numberInStock">Number in Stock:
+                            </label>
+                            <div class="form">
+                                <input type="text" name="numberStock" id="numStock" placeholder="stock.NO." required>
+                            </div>
+                        </div>
+                        <!--------------------------------------Add-Photo --------------------------->
+                        <div class="form-groupa">
+                            <label class="form-control-label" for="itemPhoto">Item Photo:
+                            </label>
+                            <div class="form2">
+                                <input type="file" id="itemPhoto" name="itemPhoto">
+                            </div>
+                        </div>
+                        <!--------------------------form-button--------------------- -->
+                    </div>
+                    <div class="form-groupa">
+                        <div class="form2">
                             <button class="btn btn-warning btn-block" name="submit" type="submit"
                                 onclick="return validateAddItem()">Submit</button>
                         </div>
+                    </div>
 
-                    </fieldset><!-- fieldset-->
+                </fieldset>
+                <!---------**************************** fieldset-End************************************----->
 
-                </form>
+            </form>
 
-            </div>
         </div>
     </div>
-
-    <!----------------- Footer ------------------>
-    <div w3-include-html="/includes/footer.html"></div>
-
-    <script src="/js/validateAddItem.js"></script>
-    <script src="/js/nav.js"></script>
 
 </body>
 

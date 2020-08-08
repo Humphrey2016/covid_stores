@@ -5,12 +5,11 @@ const multer = require('multer');
 require('../models/addItemModel')
 
 const AddItem = mongoose.model('AddItem');
-const Registration = mongoose.model('Registration')
 
 // uploading image
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/')
+        cb(null, '/public/img')
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname)
@@ -25,7 +24,7 @@ const upload = multer({
 var view = "./views/"
 // route to get information for the product
 router.get('/', (req, res) => {
-    res.sendFile('/addItem.html', {
+    res.sendFile('/', {
         root: view
     });
 });
@@ -33,7 +32,6 @@ router.get('/', (req, res) => {
 router.post('/', upload.single('itemPhoto'), async (req, res) => {
     console.log(req.file);
     const addItem = new AddItem({
-        itemMake: req.body.itemMake,
         itemMake: req.body.itemMake,
         entryDate: req.body.entryDate,
         category: req.body.category,
@@ -90,10 +88,6 @@ router.post('/update', async (req, res) => {
         res.status(400).send("Unable to update")
     }
 })
-
-
-// export module
-module.exports = router;
 
 
 

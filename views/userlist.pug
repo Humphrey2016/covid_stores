@@ -1,0 +1,42 @@
+header.card-header
+        h4.card-title Registered Agents
+        |&nbsp
+div.form-row
+        div.col.form-group.col-md-12    
+            form.search(action='/register/userlist')
+                div.form-row
+                    div.col-md-8
+                        input.form-control(name='gender' placeholder="Enter your search term ...")
+                    div.col-md-4
+                        input.btn.btn-dark.btn-block(type="submit")
+table.table
+    thead.thead-dark
+            tr
+                th Firstname
+                th Lastname
+                th Username
+                th Email
+                th Phone Number
+                th ID Number
+                th Gender
+                th Employee ID Number
+                th Country
+                th City
+                th 
+    tbody
+        each user in users
+                tr
+                    td #{user.firstname}
+                    td #{user.lastname}
+                    td #{user.username}
+                    td #{user.email}
+                    td #{user.phone_number}
+                    td #{user.id_number}
+                    td #{user.gender}
+                    td #{user.employee_no}
+                    td #{user.country}
+                    td #{user.city}
+                    td
+                        form(method="post" action='/register/delete')
+                            input(type="hidden", placeholder="", name="id", value=user._id)
+                            button.btn.btn-dark.btn-block(type="submit") Delete
