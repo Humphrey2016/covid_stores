@@ -5,7 +5,7 @@ link(href='https://fonts.googleapis.com/css?family=Stint+Ultra+Condensed', rel='
 meta(content='width=device-width,initial-scale=1,maximum-scale=1', name='viewport')
 form(name='loginform', action='/manager/managerlogin', method='POST')
   .signform
-    //  left side will be in the top at 640px screen
+    //  Here a user can log in using the listed social media platforms
     .left
       .bts
         a.fblogin(href='#')
@@ -17,12 +17,12 @@ form(name='loginform', action='/manager/managerlogin', method='POST')
         a.twlogin(href='#')
           i.fa.fa-twitter
           span Sign in with twitter
-    //  end left side 
-    //  right side will be in the bottom at 640px screen
+    //  end of social media registration 
+    //  The normal log In 
     .right
       .headit
         h login here or
-        a(href='#') sign up now
+        a(href='/contactus')  Ask for Registration
       .input-group.margin-bottom-sm
         span.input-group-addon
           i.fa.fa-envelope-o.fa-fw
@@ -33,10 +33,9 @@ form(name='loginform', action='/manager/managerlogin', method='POST')
         input.form-control(type='password', placeholder='Password', name='password')
       input.subbt(type='submit', value='login')
       br
-      a(href='#') Forgot your password?
-    //  end left side 
+      a(href='/contactus') Forgot your password? 
 //  copyrights area 
-a.copyright(target='_blank', href='https://www.facebook.com/midoghranek')
+a.copyright(target='_blank', href='https://www.facebook.com/humphrey.swgga')
   i.fa.fa-check-square
   | 
-COVID.STORES.Design.by.HUMPHREY
+COVID-STORES &copy;BwireHumphrey

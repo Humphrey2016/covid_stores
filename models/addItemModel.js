@@ -8,7 +8,7 @@ const addItemSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
-    entryDate: {
+    date: {
         type: Date,
     },
     category: {

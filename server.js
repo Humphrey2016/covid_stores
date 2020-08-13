@@ -3,7 +3,7 @@
 const express = require('express');
 const bodyParser= require('body-parser');
 const mongoose = require('mongoose');
-const mongodb =require('mongodb') 
+const mongodb =require('mongodb');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const multer = require('multer');
@@ -16,15 +16,24 @@ const expressSession = require("express-session")({
 });
 require('dotenv').config();
 const app = express();
+
+//importing my models
 const managerRegister = require('./models/managerRegistration_model');
 const agentRegister = require('./models/agentRegistration_model');
+const contactus = require('./models/contactusmodel');
+const AddItem = require('./models/addItemModel');
+const purchase = require('./models/purchaseModel');
+const addAgent = require('./models/addAgent_Model');
 
+
+const { db } = require('./models/managerRegistration_model');
 
 //importing Stake holders Routes
 const managerRoutes = require('./routes/managerRoutes');
 const salesAgentsRoutes = require('./routes/salesAgentsRoutes');
 const customersRoutes = require('./routes/customersRoutes');
-const { db } = require('./models/managerRegistration_model');
+const addItemRoutes = require('./routes/addItemRoute')
+
 
 // mongoose connection
 mongoose.connect(process.env.DATABASE,
@@ -42,7 +51,7 @@ mongoose.connection
   })
   .on("error", err => {
     console.log(`Connection error: ${err.message}`);
-  });
+});
 
 
 //pug engine
@@ -59,6 +68,9 @@ app.get('/upload',(req, res) => {
 var view = "./views/"
 //setting a path for the static files
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/manager/addItem/uploads',express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads',express.static(path.join(__dirname, 'uploads')));
+
 // To parse URL encoded data
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -74,7 +86,7 @@ app.use(passport.session());
 
 
 // Passport agentregistration configs
-passport.use(managerRegister.createStrategy());
+passport.use('manager-local',managerRegister.createStrategy());
 passport.serializeUser(managerRegister.serializeUser());
 passport.deserializeUser(managerRegister.deserializeUser());
 
@@ -87,7 +99,7 @@ passport.deserializeUser(agentRegister.deserializeUser());
 app.use('/', customersRoutes);
 app.use('/manager', managerRoutes);
 app.use('/agent', salesAgentsRoutes);
-
+// app.use('/addItem', addItemRoutes);
 //defining multer
 var storage = multer.diskStorage({
   destination: function (req, file, callback){
@@ -116,56 +128,15 @@ app.post('/uploadfile',upload.single('myFile'),(req, res, next)=>{
   res.send(file);
 });
 
-//config multiple files 
-app.post("/uploadmultiple", upload.array('myFile',12),(req, res, next)=>{
-  const files = req.files;
-  if(!files){
-    //if error
-    const error = new Error("please choose files");
 
-    error.httpStatusCode = 400;
-    return next(error);
-  }
-  //no error
-  res.send(files)
+//index Route
+  app.get('/', async(req, res) => {
+    const items = await AddItem.find()
+    res.render("index", {
+      products: items
+    });
 });
 
-// configuring the image upload to the database
-app.post("/uploadphoto",upload.single('myImage'),(req, res)=>{
-  var img = fs.readFileSync(req.file.path);
-
-  var encode_image = img.toString('base64');
-
-//define a JSON Object for the image
-  var finalImg = {
-    contentType: req.file.mimetype,
-    path:req.file.path,
-    image:new Buffer(encode_image, 'base64')
-  };
-  //inser image to the database
-  db.collection('image').insertOne(finalImg,(err, result) => {
-    console.log(result);
-
-    if(err) return console.log(err);
-
-    console.log("saved to your dataBase no need to panic");
-
-    res.contentType(finalImg.contentType);
-
-    res.send(finalImg.image);
-  });
-});
-
-
-// index Route
-  app.get('/', (req, res) => {
-    res.sendFile("index.html", { root: view });
-});
-
-// index Route
-app.get('/images', (req, res) => {
-  res.sendFile("multer.html", { root: view });
-});
   
 
 // Simple request time logger

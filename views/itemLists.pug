@@ -1,0 +1,49 @@
+meta(charset='UTF-8')
+meta(name='viewport', content='width=device-width,initial-scale=1')
+title Covid Stores
+// ----------------------------------NAV BAR START------------------------
+div(w3-include-html='/includes/nav.html')
+// ----------------------------==/NAV BAR END-----------------------------
+.container
+  .row
+    .col-md
+      .col-md-8
+          input.form-control(name='itemName' placeholder="Search itemName")
+      .col-md-4
+          button.btn.btn-dark.btn-block(type="submit") Search
+      table.table
+        thead
+          tr
+            th(scope='col') Product
+            th(scope='col') Name
+            th(scope='col') Make
+            th(scope='col') Serial
+            th(scope='col') price
+            th(scope='col') Stock
+            th(scope='col') Photo
+        tbody
+        each itemList in itemLists
+          tr
+            th(scope='row') 
+            td #{itemList.itemName}
+            td #{itemList.itemMake}
+            td #{itemList.serialNumber}
+            td #{itemList.price}
+            td #{itemList.numberStock}
+            td 
+                img(src="../"+itemList.itemPhoto, alt="", width=100)
+            td 
+                form(method="post" action='/manager/delete')
+                    input(type="hidden", placeholder="", name="id", value=itemList._id)
+                    button.btn.btn-dark.btn-block(type="submit") Delete                
+
+
+form(method="" action='/manager/managerDash')
+    input(type="hidden", placeholder="", name="back",)
+    button.btn.btn-dark.btn-block(type="submit") Back               
+// FOOTER
+footer
+  div(w3-include-html='../includes/footer.html')
+// Footer End
+script(src='../includes/nav.js')
+script(src='./includes/footer.js')

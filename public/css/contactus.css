@@ -74,7 +74,7 @@ body{
 .wrapper #error_message{
     margin-bottom: 20px;
     padding: 0px;
-    background: rgb(11, 60, 83);
+    background: rgb(12, 241, 4);
     text-align: center;
     font-size: 14px;
     transition: all 0.5s ease;

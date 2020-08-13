@@ -37,7 +37,7 @@ body{
 label{
     color: #a7cbf0;
 }
-.my-form #error_message{
+form #error_message{
     margin-bottom: 20px;
     padding: 0px;
     background: rgb(6, 73, 85);

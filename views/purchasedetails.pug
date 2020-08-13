@@ -1,0 +1,89 @@
+meta(charset='UTF-8')
+meta(name='viewport', content='width=device-width,initial-scale=1')
+link(rel='stylesheet', href='../css/addpurchase.css')
+title Record Purchase
+h1(style='font-family: cursive; color: rgb(14, 248, 14); text-align: center;')
+  i.fas.fa-gift
+  | >>Covid Stores
+//  table heading 
+.container
+  .row
+    .col
+      .card-body
+        header.card-header
+          h1.card-title#head PURCHASE DETAILS
+  //  main form div 
+  .row
+    .col-md-6
+      //  form start 
+      form#salesAgent(name='salesAgent', action='/agent/purchase', onsubmit='return puchValidation()' method='POST')
+        // ---------- fieldset start-------------------------------------------
+        fieldset.form-group.border.p-2
+          legend.w-auto.border-primary Customer Purchase Details
+          .form-group
+            .form-groupb
+              label.form-control-label(for='customerName') Customer Name
+              .form2
+                input#customerName(type='text', name='customerName')
+            // ------------------------form-group--------------------------------
+            .form-groupb
+              label.form-control-label(for='location') Location
+              .form2
+                input#location(type='text', name='location')
+            // -----------------------Phone-no-------------------------------------
+            .form-groupb
+              label.form-control-label(for='phone-no.') Phone No.
+              .form2
+                input#tel(type='text', name='tel')
+            // ------------------------------email-adresss--------------------------
+            .form-groupb
+              label.form-control-label(for='emailAdress') Email Address
+              .form2
+                input#emailAdress(type='text', name='emailAdress')
+            // -----------------------------National-ID-NO---------------------------
+            .form-groupb
+              label.form-control-label(for='NINno') National ID No.
+              .form2
+                input#NINno(type='text', name='NINno')
+            // ----------------------------Item-Namr----------------------------------
+            .form-groupb
+              label.form-control-label(for='itemName') Item Name
+              .form2
+                input#itemName(type='text', name='itemName')
+            // -----------------------------PRODUCT-Serial-Number---------------------
+            .form-groupb
+              label.form-control-label(for='serialNo') Serial Number
+              .form2
+                input#serialNo(type='text', name='serialNo')
+            // --------------------------------INITIAL-Pay-----------------------------
+            .form-groupb
+              label.form-control-label(for='Initialpay') Initial Pay (.00ugx)
+              .form2
+                input#initialpay(type='text', name='initialpay')
+            // ----------------------------------Next-payment-Date-----------------------
+            .form-groupb
+              label.form-control-label(for='nextPay') Next Date Of Payment
+              .form2
+                input#nextPay(type='text', name='nextPay')
+            // ----------------------------------Next-Payment----------------------------
+            .form-groupb
+              label.form-control-label(for='nextAmount') Next Amount to be Paid
+              .form2
+                input#nextAmount(type='text', name='nextAmount')
+            // -------------------------Ref-NO.------------------------------------------
+            .form-groupb
+              label.form-control-label(for='refNo') Referee number
+              .form2
+                input#refNo(type='text', name='refNo')
+                br
+            // --------------------------Submit-Button-----------------------------------
+            .form-groupb
+              .form3
+                input.btn.btn-warning.btn-block(type='Submit')
+            // ---------------------------------Back--------------------------------------
+            .form-groupb
+              .form3
+                button Back to DashBoard
+      // ------------------------Form-End--------------------------------------------------
+
+script(src='/js/purchasevalidation.js')

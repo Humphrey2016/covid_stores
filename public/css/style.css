@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton&family=Calistoga&family=Gugi&family=Lato:wght@100&family=Roboto:wght@100;900&family=Sofia&display=swap");
 
 :root {
-  --light-gray: #23f32ea1;
+  --light-gray: rgb(5, 61, 78);
   --primary-color: #203846;
   --roboto: "sofia", sans-serif;
   --gugi: "Gugi", cursive;
@@ -51,18 +51,19 @@ header {
 .site-slider {
   position: relative;
   margin-left: 3rem;
-  width: 500px;
+  width: 520px;
+  height: 430px;
 }
 
 h1 {
   position: absolute;
   text-align: center;
-  width: 50%;
+  width: 55%;
   font-family: var(--sofia);
   margin-left: 36rem;
   margin-top: 3rem;
-  font-size: 4rem;
-  color: rgb(7, 78, 95);
+  font-size: 3.8rem;
+  color: rgb(3, 45, 70);
 }
 h2 {
   font-size: 2.8rem;
@@ -90,19 +91,18 @@ h3 {
 .site-slider .slider-btn .prev {
   background-color: var(--primary-color);
   padding: 1rem 1.5rem;
-  border-radius: 5rem;
-  color: rgb(7, 167, 15);
+  border-radius: 25rem;
+  color: rgb(10, 236, 10);
   margin: 0 1rem;
 }
 
 /* slick dots */
 .slick-dots {
   display: flex;
-  margin-left: 10rem;
-  padding: 1rem 0;
+  margin-left: 12rem;
+  padding: 0.0em;
   list-style-type: none;
   position: relative;
-  bottom: 5px;
   right: 50%;
 }
 
@@ -117,7 +117,7 @@ h3 {
   margin-left: 2rem;
   padding: 0;
   border: none;
-  background-color: rgb(26, 50, 53);
+  background-color: rgb(10, 233, 10);
   text-indent: -99999px;
   border-radius: 100%;
 }
@@ -130,26 +130,26 @@ h3 {
 /* Second Slide */
 .slider-slider-two {
   position: relative;
-  height: 30%;
-}
+  height: 20%;
+  }
 
 .site-slider-two .products {
-  height: 25rem;
+  height: 15rem;
   position: relative;
   overflow: hidden;
 }
 
 .site-slider-two .product img {
-  width: 90%;
-  margin-bottom: 2rem;
+  width: 99%;
+  margin-bottom: 0.5rem;
 }
 
 .site-btn.btn-span {
   padding: 0.8rem 1.9rem;
-  border-radius: 5rem;
+  border-radius: 15rem;
   border: 1px solid var(--border);
-  background-color: rgb(21, 58, 63);
-  color: var(--light-gray);
+  background-color: rgb(3, 44, 77);
+  color:rgb(26, 247, 18);
 }
 
 .slider-two .slick-track .product:hover {

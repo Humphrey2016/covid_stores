@@ -1,0 +1,50 @@
+meta(charset='UTF-8')
+meta(name='viewport', content='width=device-width,initial-scale=1')
+title Covid Stores
+// ----------------------------------NAV BAR START------------------------
+div(w3-include-html='/includes/nav.html')
+// ----------------------------==/NAV BAR END-----------------------------
+.container
+  .row
+    .col-md
+    
+      table.table
+        thead
+          tr
+            th(scope='col') Sales Agent List
+            th(scope='col') Full Name
+            th(scope='col') Email Address
+            th(scope='col') User Name
+            th(scope='col') Item Name
+            th(scope='col') password
+            th(scope='col') Employee ID
+            th(scope='col') 
+
+        tbody
+        tbody
+        each itemList in itemLists
+          tr
+            th(scope='row') 
+            td #{itemList.fullname}
+            td #{itemList.emailaddress}
+            td #{itemList.username}
+            td #{itemList.password}
+            td #{itemList.EMPnumber}
+            td #{itemList.NINnumber}            
+            td
+            td             
+                form(method="post" action='/agent/delete')
+                    input(type="hidden", placeholder="", name="id", value=itemList._id)
+                    button.btn.btn-dark.btn-block(type="submit") Delete
+
+form(method="" action='/manager/managerDash')
+    input(type="hidden", placeholder="", name="back",)
+    button.btn.btn-dark.btn-block(type="submit") Back 
+                   
+                
+// FOOTER
+footer
+  div(w3-include-html='../includes/footer.html')
+// Footer End
+script(src='../includes/nav.js')
+script(src='./includes/footer.js')

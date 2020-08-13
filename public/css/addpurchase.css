@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Calistoga&family=Gugi&family=Lato:wght@100&family=Roboto:wght@100;900&family=Sofia&display=swap");
+
+* {
+    margin: 0px;
+}
+
+body {
+    background-color: #062f44;
+    font-family: sans-serif;
+}
+
+#head {
+    text-align: center;
+    color: rgb(76, 223, 223);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3rem;
+
+}
+
+label {
+    width: 32%;
+    float: left;
+}
+
+legend {
+    font-weight: bold;
+    color: rgb(14, 188, 241);
+}
+
+.form-groupb{
+    color: rgb(50, 247, 11);
+    margin: 0.5em;
+    font-family: sofia;
+    font-size: 1.2rem;
+}
+
+.form2 input{
+    width: 35%;
+    border: 1px solid #aaa;
+    border-radius: 5rem;
+    padding: 6px;
+    outline: none;
+}
+
+.form3 input{
+    width: 10%;
+    border: 1px solid rgb(37, 238, 10);
+    border-radius: 5rem;
+    padding: 6px;
+    outline: none;
+}
+

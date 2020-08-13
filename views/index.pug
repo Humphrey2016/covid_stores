@@ -1,7 +1,105 @@
 meta(charset='UTF-8')
 meta(name='viewport', content='width=device-width,initial-scale=1')
-title uploads
-div
-  form(action='/upload', method='post', enctype='multipart/form-data')
-    input(type='file', name, multiple)
-    button(type='submit') Upload
+title Covid Store
+// Boostrap CDN
+link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css', integrity='sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk', crossorigin='anonymous')
+// FontAwesome
+script(src='https://kit.fontawesome.com/7bd4d37701.js', crossorigin='anonymous')
+// Slick Slider
+link(rel='stylesheet', type='text/css', href='//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css')
+// Custom Stylesheet
+link(rel='stylesheet', href='css/style.css')
+// ----------------------------------NAV BAR START------------------------
+div(w3-include-html='/includes/nav.html')
+// ----------------------------==/NAV BAR END-----------------------------
+main.relative
+  // --------------====================***********First Slider***********=====================
+  h1.slider-one-h1 Welcome to >>Covid Stores where shopping comes to reality with in just a *click*
+  .container-fluid.p-0
+    .site-slider
+      .slider-one
+        .ps4
+          img.img-fluid(src='/img/ps4.png', alt='Shopping')
+        .shopping1
+          img.img-fluid(src='/img/Shopping-PNG-Image.png', alt)
+        .shopping2
+          img.img-fluid(src='/img/shoping.png', alt)
+        .shopping2
+          img.img-fluid(src='/img/ladyshopping.png', alt)
+        .shopping2
+          img.img-fluid(src='/img/handbags.png', alt)
+        .shopping2
+          img.img-fluid(src='/img/camera.png', alt)
+        .shopping2
+          img.img-fluid(src='/img/chair.jpg', alt)
+        .shopping3
+          img.img-fluid(src='/img/Shopping-Download-PNG.png', alt)
+        .shopping4
+          img.img-fluid(src='/img/popcon-movie.jpeg', alt)
+      .slider-btn
+        span.prev.position-top
+          i.fas.fa-chevron-left
+    // -------------==============**********First Slide End===============*************----------
+    // ------------================**************Second Slider Start===========**********------------
+    .container-fluid
+      .site-slider-two.px-md-4
+        .row.slider-two.text-center
+          .col-md-2.product.pt-md-5.pt-4
+            img(src='/img/imgs/house-hold/hoofer.jpg', alt='product 1')
+            span.border.site-btn.btn-span
+              b FUNITURE
+          .col-md-2.product.pt-md-5.pt-4
+            img(src='/img/imgs/women/Pink-Women-bag.png', alt='product 2')
+            span.border.site-btn.btn-span
+              b HOME THEATER
+          .col-md-2.product.pt-md-5.pt-4
+            img(src='/img/imgs/men/Men-simple-set.png', alt='product 3')
+            span.border.site-btn.btn-span
+              b MACHINERY 
+          .col-md-2.product.pt-md-5.pt-4
+            img(src='/img/imgs/food-staffs/Berries-red.png', alt='product 4')
+            span.border.site-btn.btn-span
+              b TV Sets
+          .col-md-2.product.pt-md-5.pt-4
+            img(src='/img/imgs/Babies/KIDS.png', alt='product 1')
+            span.border.site-btn.btn-span
+              b FITNESS KITS 
+          .col-md-2.product.pt-md-5.pt-4
+            img(src='/img/popcon-movie.jpeg', alt='product 1')
+            span.border.site-btn.btn-span
+              b OTHERS
+    // ------------================**************Second Slider End===========**********-------------------
+    hr
+    // ----------------------------------item cards-----------------------------------------------------
+    // ------------------Available products---------------------
+ 
+  div.container
+         div.row
+           
+            div.col-md-12.product-card
+                div.row                    
+                    each product in products
+                        div.col-md-12.col-lg-4.mb-4
+                            div(style="margin: 0 3px;")
+                              .card(style='width: 20rem;')
+                                  img.card-img-top(src=product.itemPhoto, alt='Card image cap', height="250px")
+                                  .card-block
+                                    h4.card-title #{product.itemName}
+                                    p.card-text Price: #{product.price} UGX
+                                    p.card-text LTTP                                    
+                                     
+
+// Main section end
+// FOOTER
+
+footer
+  div(w3-include-html='./includes/footer.html')
+// Footer End
+script(src='../includes/nav.js')
+script(src='../includes/availableProducts.js')
+script(src='./includes/footer.js')
+script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js', integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj', crossorigin='anonymous')
+script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo', crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js', integrity='sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI', crossorigin='anonymous')
+script(type='text/javascript', src='//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js')
+script(src='../js/main.js')

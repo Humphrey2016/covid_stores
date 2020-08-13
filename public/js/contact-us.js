@@ -38,8 +38,9 @@ function validation(){
         error_message.innerHTML = text;
         return false;        
     }
-
-    alert("Form Submitted Successfully!")
-    return true;    
+    else{
+        alert('form submitted successfully')
+        return true        
+    }    
 }
 

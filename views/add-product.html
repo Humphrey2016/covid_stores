@@ -9,6 +9,9 @@
 
 <!----------------------this is to be used be used by the Managers to add stock------------------------------------->
 <body row justify-content-center>
+
+    <h1 style="font-family: cursive; color: rgb(14, 248, 14); text-align: center;"><i class="fas fa-gift"></i>>></i>Covid Stores</h1>
+
     <div class="container">
         <!-- Title -->
         <div class="row">
@@ -23,7 +26,7 @@
 
         <div class="col-md-6">
 
-            <form action="/" method="POST" name="addItem" id="addItem" enctype="multipart/form-data">
+            <form action="/manager/manager/addItem" method="POST" name="addItem" id="addItem" enctype="multipart/form-data">
 
                 <fieldset class="form-group border p-2">
                     <legend class="w-auto border-primary">Product Info</legend>
@@ -41,7 +44,7 @@
                             <label class="form-control-label" for="make">Make: </label>
 
                             <div class="form">
-                                <input type="text" placeholder="country" name="ItemMake" required>
+                                <input type="text" placeholder="country" name="itemMake" required>
                             </div>
 
 
@@ -51,7 +54,7 @@
                         <div class="form-groupa">
                             <label class="form-control-label" for="entryDate">Date of Entry: </label>
                             <div class="form">
-                                <input name="entryDate" type="date">
+                                <input name="date" type="date">
                             </div>
                         </div>
                         <!-- -------------------Select-Item-Category----------------------------------->
@@ -127,6 +130,11 @@
                                 onclick="return validateAddItem()">Submit</button>
                         </div>
                     </div>
+                    <div class="form-groupa">
+                        <div class="form2">
+                            <button class="btn btn-warning btn-block" name="back">Back</button>
+                        </div>
+                    </div>                    
 
                 </fieldset>
                 <!---------**************************** fieldset-End************************************----->

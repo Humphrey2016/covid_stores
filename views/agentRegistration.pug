@@ -7,56 +7,64 @@ link(href='https://fonts.googleapis.com/css?family=Raleway:300,400,600', rel='..
 //  Bootstrap CSS 
 link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css')
 //custom validation js
-script(src='../js/validate.js')
+
 title Register Agent
 main.my-form
   h2 Agent Registration
-  #error_message
   .cotainer
     .row.justify-content-center
       .col-md-8
         .card
           .card-header REGISTER NEW SALES AGENT
           .card-body
-            form#regFom(name='registration-form' onsubmit='return regValidation()', action='/agent/agentReg', method='POST')
+            form#regFom(name='registration',  action='/agent/agentReg', onsubmit='return regValidation()', method='POST')
               .form-group.row
                 label.col-md-4.col-form-label.text-md-right(for='full_name') Full Name
                 .col-md-6
-                  input#fullname.form-control(type='text', name='fullname',  required)
+                  input#fullname.form-control(type='text', name='fullname', )
+                  small#nameerr
               .form-group.row
                 label.col-md-4.col-form-label.text-md-right(for='email_address') E-Mail Address
                 .col-md-6
-                  input#emailaddress.form-control(type='email', name='emailaddress', )
+                  input#emailaddress.form-control(type='email', name='emailaddress',  )
+                  small#emailerr
               .form-group.row
                 label.col-md-4.col-form-label.text-md-right(for='user_name') User Name
                 .col-md-6
-                  input#username.form-control(type='text', name='username', required)
+                  input#username.form-control(type='text', name='username',)
+                  small#usernameerr
               .form-group.row
                 label.col-md-4.col-form-label.text-md-right(for='password') Choose Password
                 .col-md-6
-                  input#password.form-control(type='password', placeholder='Password', name='password', required)                  
+                  input#password.form-control(type='password', placeholder='Password', name='password', )  
+                  small#passworderr             
               .form-group.row
                 label.col-md-4.col-form-label.text-md-right(for='password') Re Enter Password
                 .col-md-6
-                  input#repassword.form-control(type='password', placeholder='Re Password', name='repassword',  required)
+                  input#repassword.form-control(type='password', placeholder='Re Password', name='repassword', )
+                  small#repassworderr
               .form-group.row
                 label.col-md-4.col-form-label.text-md-right(for='EMPnumber')
                   abbr(title='EMPLOYEE Id Card') Employee ID
                   |  Number
                 .col-md-6
-                  input#NINnumber.form-control(type='text', name='EMPnumber', required)
+                  input#EMPnumber.form-control(type='text', name='EMPnumber',)
+                  small#EMPnumbererr
               .form-group.row
                 label.col-md-4.col-form-label.text-md-right(for='NINnumber')
                   abbr(title='National Id Card') NID
                   |  Number
                 .col-md-6
-                  input#EMPnumber.form-control(type='text', name='NINnumber')
+                  input#NINnumber.form-control(type='text', name='NINnumber',)
+                  small#NINnumbererr
               .col-md-6.offset-md-4
                 button.btn.btn-primary(type='submit').
                   
                   Register
+
+                  Back to DashBoard 
+script(src='/js/validate.js')                  
                   
 script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')
 script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')
-//- script(src='../js/registration-form.js')
